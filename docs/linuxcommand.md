@@ -131,16 +131,129 @@ $ cut -d : -f 1 /etc/passwd
 $ awk -F':' '{ print $1}' /etc/passwd
 ```
 ## 7. Cài đặt phần mềm 
-### 7.1. Cài đặt online
+### 7.1. Dùng Ubuntu Software Center
+Để cài đặt 1 phần mềm, bạn làm theo các bước sau:  
+- Mở Ubuntu Software Center
+- Viết tên phần mềm cần cài đặt
+- Chọn phần mềm cần cài đặt và nhấn Install
+- Nhập mật khẩu root và đợi nó cài đặt xong  
+
+Ví dụ: Cài phần mềm Telegram Desktop
+
+![](../images/2019-05-31_08-23.png)
+
+### 7.2. Sử dụng apt-get trên Terminal
+1. Cài đặt online:   
 - Mở Terminal: Ctrl Alt T 
 - Ta dùng lệnh :
 ```
 sudo apt-get install ten_goi
 ```
+- Nhập mật khẩu và đợi cài đặt xong    
 
-- Nhập mật khẩu và đợi cài đặt xong
-### 7.2. Cài đặt offline
-- Các gói phần mềm thường có đuôi là: .deb, .rpm, .bin và dạng nén tarball (.tar, .tar.gz, .tgz,…)  
-- Cài đặt file .deb  
- Ta chỉ cần click vào là tự nó sẽ cài đặt – sử dụng Ubuntu Software Center.  
-- 
+2. Cài đặt offline:
+- Ta đã tải về gói phần mềm rồi. Bây giờ ta chỉ việc cài đặt chúng thôi, nên việc này không cần thiết phải có mạng Internet.
+- Cài đặt file .deb
+Cài đặt loại này cực kì đơn giản, bạn chỉ cần click vào là tự nó sẽ cài đặt – sử dụng Ubuntu Software Center.
+- Cài đặt file .rpm  
+Mình sẽ chuyển file .rpm thành file .deb để làm giống như trên:  
++Mở Terminal  
++Cài đặt gói alien với câu lệnh:
+``` 
+sudo apt-get install alien  
+```
++Convert file từ .rpm thành .deb với câu lệnh:
+```
+ sudo alien -k filename.rpm
+ ```
++Sau bước trên bạn đã có một tệp tin là filename.deb, tiếp tục click vào để cài đặt.
+
+- Cài đặt file .bin  
++Đầu tiên lưu file .bin tới Desktop.   
++Mở Terminal:  
++Di chuyển đến thư mục chứa file: 
+```
+cd Desktop
+```
++Thêm quyền cho file:
+```
+ sudo chmod +x filename.bin  
+```
++Cài đặt: ./filename.bin   
++Sau đó chương trình sẽ cài đặt trong Terminal!
+
+- Cài đặt phần mềm từ tarball  
+
+Một tarball (thường là các file .tar , .tar.gz , .tgz , .tar.bz2 , .tbz2 ) gồm có mã nguồn cho chương trình mà ta phải tự biên dịch, trình biên dịch (compile) như GCC… thì thường có sẵn trong Linux . Các bước cài đặt Tarball về cơ bản như sau:  
++Giải nén tarball  
+-Cách 1: click vào file, nhấn chuột phải, chọn extract here
+
+-Cách 2: dùng dòng lệnh:
+```
+$ tar zxvf file.tar.gz
+$ tar zxf file.tar.gz
+```
+Configure  
+
+-Mở terminal lên, dùng lệnh cd để di chuyển tới nơi chứa file  
+-Gõ ./configure : mục đích là để kiểm tra xem hệ thống có đầy đủ các phần mềm để cài đặt chưa,nếu thiếu thì ta phải cài đặt các phần mềm đó trước   
+-Gõ make : chờ cho tới khi hoàn thành rồi đến bước tiếp theo  
+-Gõ ```
+sudo make install ``` đợi cho tới khi kết thúc là hoàn thành cài đặt.
+
+## 8. Process 
+- Hiển thị process đang chạy ta dùng câu lệnh:
+```
+ps aux | less
+```
+- a : hiển thị các quy trình cho tất cả người dùng   
+- u : hiển thị người dùng / chủ sở hữu của quy trình 
+- x : cũng hiển thị các quy trình không được đính kèm với thiết bị đầu cuối  
+
+Ví dụ :
+
+![](../images/2019-05-31_19-43.png)  
+- killall để kết thúc 1 tiến trình đang chạy
+Kill process theo tên với lệnh :
+```
+killall [process-name]
+```
+
+- kill để chấm dứt tiến trình dựa vào ID hoặc PID :  
++ PID (proportional Integral Derivative ) là bộ điều khiển vi tích phân tỉ lệ.  
+Câu lệnh:
+```
+kill [PID]
+```
+ 
+## 9. Netstat 
+- Là lệnh để giám sát hệ thống trên linux
+- Các câu lệnh :  
+`netstat -a` hiển thị tất cả các ổ cắm hiện đang sử dụng.  
+
+`netstat -at` kiểm tra port đang sử dụng TCP 
+
+ ![](../images/2019-05-31_20-00.png)
+
+`netstat -au` kiểm tra port đang sử dụng UDP  
+
+![](../images/2019-05-31_20-01.png)
+
+`netstat -rn` show ra bảng định tuyến
+
+![](../images/2019-05-31_20-04.png)
+
+| Destination	|	Cột này cho biết mạng đích |
+| ---- | --------------- |
+|Gateway |	Cột này cho biết cổng được xác định cho mạng |
+| Genmask |	Cột này cho biết netmask của mạng |
+| MSS	| Cột này cho biết Kích thước phân đoạn tối đa (MSS) mặc định cho các kết nối TCP cho tuyến đường này |
+| Window |  Cột này cho biết kích thước cửa sổ mặc định cho các kết nối TCP trên tuyến đường này. |
+| Irtt | Cột này cho biết Thời gian khứ hồi ban đầu cho tuyến đường này.|
+| Iface | Cột Iface hiển thị giao diện mạng. |
+
+
+
+
+
+
