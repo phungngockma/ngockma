@@ -252,7 +252,22 @@ kill [PID]
 | Irtt | Cột này cho biết Thời gian khứ hồi ban đầu cho tuyến đường này.|
 | Iface | Cột Iface hiển thị giao diện mạng. |
 
+## 10. history
+- Tra vấn lịch sử ta dùng lệnh sau hiển thị 1000 dòng lệnh cuối cùng :
+```
+history | less
+```
+- Nếu muốn tìm 1 lệnh cụ thể  đã sử dụng ta có thể dùng lệnh sau :
+``` 
+history | grep 'từ khóa cần tìm'
+```
+- Muốn xóa lịch sử các lệnh đã sử dụng ta dùng lệnh sau :
+```
+history -c 
+```
+Ví dụ tìm kiếm lệnh top :
 
+![](../images/2019-05-31_20-19.png)
 
 
 
