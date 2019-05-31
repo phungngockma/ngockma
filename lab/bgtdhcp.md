@@ -45,7 +45,7 @@ Cổng nguồn 68, cổng đích 67
 ![](../images/2019-05-28_20-04.png) 
 
 - Message type : 2 - thông điệp phản hồi
-- Địa chỉ cấp cho Client : 192.168.0.6
+- Địa chỉ cấp cho Client : 192.168.184.254
 - Các option : Type(offer), ID server, IP address Lease Time, Subnet Mark, Router, DNS
 
 3.  DHCP Request
@@ -61,7 +61,7 @@ Cổng nguồn 68, cổng đích 67
 
 ![](../images/2019-05-28_20-08.png)
 
-- IP nguồn : 192.168.0.1, IP đích 192.168.0.6
+- IP nguồn : 192.168.184.254, IP đích 192.168.184.131
 - Các option : Type (ACK), DHCP serverID, IP address Lease Time, Subnet Mark, Router, DNS
 
 
