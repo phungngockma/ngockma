@@ -11,5 +11,7 @@ vi ~/.bashrc
 
 3. Để khi reboot biến môi trường không bị mất ta sẽ sửa bashrc ví dụ như sau:
 
-![](../images/2019-06-07_16-59.png)
+![](../images/2019-06-11_09-32.png)
+
+![](../images/2019-06-11_09-39.png)
 
