@@ -269,6 +269,28 @@ Ví dụ tìm kiếm lệnh top :
 
 ![](../images/2019-05-31_20-19.png)
 
+## 11. Biến môi trường
+- Biến môi trường là một tập hợp các biến động là một phần của môi trường vận hành cho các hệ điều hành giống như UNIX như CentOS. Các biến này ảnh hưởng đến hành vi của các quy trình chạy trong hệ điều hành đó.  
+- Đọc biến môi trường  
+Một số lệnh có thể hiển thị các biến môi trường trong CentOS.  
+Các env lệnh cho phép bạn xuất ra một môi trường, thường với mục đích thay đổi môi trường cho một chương trình cụ thể. 
+
+![](../images/2019-06-05_15-24.png)
+
+Các set lệnh in tên và giá trị của mỗi biến môi trường, và tạo ra kết quả này:
+
+![](../images/2019-06-05_15-26.png)  
+
+Các printenv lệnh cũng in các biến môi trường:
+
+![](../images/2019-06-05_15-29.png)
+
+Bạn cũng có thể đọc giá trị của một biến cụ thể bằng lệnh echo:
+
+Ví dụ:
+
+![](../images/2019-06-05_15-32.png)
+
 
 
 
