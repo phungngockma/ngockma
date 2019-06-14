@@ -35,5 +35,9 @@ netstat -tulpn
 
 Kết quả như trên là đã start thành công rồi, Module pmp prefork, apache đã chạy với pid 7366 , Web server đang lắng nghe trên port 80.
 
-## 3. Cấu hình Virtual host trên CentOS7
+## 3. Virtual host 
+a. Khái niệm   
 
+Virtual host là một định nghĩa chỉ chức năng nhúng nhiều tên miền vào một địa chỉ IP của một Server. Và bằng cách cài đặt riêng, Server sẽ nhận biết được tên miền nào sẽ hoạt động ở một folder nào.
+
+b. Cài đặt và cấu hình Virtual host trên Apache  
