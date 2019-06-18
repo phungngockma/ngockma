@@ -100,7 +100,7 @@ vi /etc/httpd/sites-available/example.com.conf
 
 Làm tương tự với web 2:
 ```
-cp /etc/httpd//example.com.conf /etc/httpd/conf.d/example2.com.conf 
+cp /etc/httpd/sites-available/example.com.conf /etc/httpd/sites-available/example2.com.conf 
 ```
 ```
 vi /etc/httpd/conf.d/example2.com.conf 
