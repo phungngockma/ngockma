@@ -35,6 +35,9 @@ netstat -tulpn
 
 Kết quả như trên là đã start thành công rồi, Module pmp prefork, apache đã chạy với pid 7366 , Web server đang lắng nghe trên port 80.
 
+Để truy cập được web server ta cần cấu hình firewall allow web traffic : 
+ ``` firewall-cmd --zone=public --add-port=80/tcp --permanent ```
+
 ## 3. Virtual host 
 ### a. Khái niệm   
 
@@ -93,7 +96,7 @@ Tạo và cấu hình file example.com.conf ta dùng lệnh :
 vi /etc/httpd/sites-available/example.com.conf
 ```
 
-![](../images/2019-06-18_09-46.png) 
+![](../images/2019-06-18_15-00.png) 
 
 Làm tương tự với web 2:
 ```
@@ -104,7 +107,7 @@ vi /etc/httpd/conf.d/example2.com.conf
 ```
 File cấu hình :
 
-![](../images/2019-06-18_10-05.png)
+![](../images/2019-06-18_14-59.png)
 
 3. Kích hoạt các File Virtual Host mới
 
