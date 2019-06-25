@@ -3,6 +3,23 @@
 
 Virtual host là một định nghĩa chỉ chức năng nhúng nhiều tên miền vào một địa chỉ IP của một Server.
 ## Cài đặt và cấu hình Virtual host trên Apache 
+
+Trước khi cấu hình Virtual host ta cần tắt firewall và selinux với lệnh sau:
+```
+systemctl stop firewall
+```
+Tắt tạm thời selinux:
+```
+setenforce 0
+```
+Để tắt vĩnh viễn selinux ta sửa file sau:
+```
+vi /etc/selinux/config
+```
+Thay đổi giá trị SELINUX=disabled
+
+![](../imagess/screen14.png)
+
 ### 1. Tạo cấu trúc thư mục
 
 Mặc dù bạn có thể tạo các thư mục ở bất cứ đâu, theo quy ước chung, các thư mục cho mỗi trang web được đặt trong /var/wwwthư mục và bắt đầu với một thư mục được đặt tên theo URL của trang web.  
