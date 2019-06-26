@@ -24,7 +24,7 @@ Contents
 #### Open source
 - Open source là mã nguồn mở ,nghĩa là ai cũng có thể dùng và chỉnh sửa nó. Bất kỳ ai cũng có thể cài đặt phần mềm này.
 #### SQL (Structured Query Language)
-- Client và server liên lạc với nhau trong môi trường của RDBMS ,Chúng sử dụng ngôn ngữ truy vấn có cấu trúc chung – Structured Query Language (SQL).
+- SQL là ngôn ngữ truy vấn có cấu trúc – Structured Query Language (SQL).
 - SQL không chỉ dùng để truy xuất dữ liệu mà SQL được sử dụng để điều khiển tất cả các chức năng mà một hệ quản trị cơ sở dữ liệu cung cấp cho người dùng.
 
 <b name="b">
@@ -75,3 +75,46 @@ sudo systemctl start mysqld
 systemctl status mysqld 
 ```
 ![](../images/screen4.png)
+
+### Bước 4 : Cài đặt tài khoản root
+
+Để có thể cài đặt tài khoản root có thể sử dụng được thì ta thực hiện lệnh và hiển thị như sau:
+```
+mysql_secure_installation
+```
+![](../images/screen5.png)
+
+![](../images/screen6.png)
+
+![](../images/screen7.png)
+
+![](../images/screen8.png)
+
+Ta sẽ giải thích các mục như sau:
+
+- Enter current password for root (enter for none): là nhập mật khẩu hiện tại của root hiện tại nó chưa có thì chúng ta chỉ cần enter qua
+- Set root password? [Y/n] : Đặt mật khẩu cho root
+- Remove anonymous users? [Y/n] Xóa người dùng ẩn danh
+- Disallow root login remotely? [Y/n] : Không cho phép đăng nhập root từ xa
+- Remove test database and access to it? [Y/n] : Xóa và kiểm tra cơ sở dữ liệu và đăng nhập vào nó
+- Reload privilege tables now? [Y/n] : Tải lại bảng đặc quyền ngay bây giờ
+
+Sau khi ta cài đặt xong mysql thì ta cần tạo ra user để có thể đăng nhập được mysql. Để tạo được user thì ta sử dụng lệnh sau. Cuối mỗi câu lệnh cần có dấu ; hoặc /g
+```
+create user 'user-name'@'IP' identified by 'password';
+```
+
+Trong đó ta có:
+
+- username : tên của user
+- IP : máy có thể truy cập user này muốn tất cả các user đều đăng nhập được ta để %
+- password : là pass để ta đăng nhập 
+
+![](../images/screen9.png)
+
+Kiểm tra phiên bản mysql sử dụng câu lệnh:
+```
+select version();
+```
+![](../images/screen10.png)
+
