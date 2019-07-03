@@ -102,13 +102,6 @@ mv wordpress/* /var/www/html/
 mysql -u root -p
 ```
 #### 2. Tạo cơ sở dữ liệu và người dùng mới có quyền sử dụng nó:
-Tạo user 
-```
-create user 'user-name'@'IP' identified by 'password';
-```
-Ví dụ:
-
-![](../images/a3.png)
 
 Tạo database:
 ```
@@ -117,8 +110,9 @@ GRANT ALL PRIVILEGES on wordpress.* to 'user'@'ip' identified by 'password';
 ```
 Ví dụ:
 
-![](../images/a4.png)
+![](../images/a11.png)
 
+Gõ lệnh sau để lưu cấu hình : 
 ```
 FLUSH PRIVILEGES;
 ```
