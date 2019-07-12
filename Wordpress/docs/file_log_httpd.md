@@ -67,7 +67,20 @@ Các trường bổ sung là:
 "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36"  
 Tiêu đề yêu cầu HTTP Tác nhân người dùng. Đây là thông tin nhận dạng mà trình duyệt máy khách báo cáo về chính nó.
 
+### Log khi restart HTTPD
+
+Ta thực hiện lệnh restart HTTPD:
+```
+systemctl restart httpd
+```
+Truy cập vào file /var/log/httpd/access_log/
+
+![](../images/screen_2.png)
+
+
 <b name="b">
+
+
 
 ## 2. Error log </b>
 - Chứa thông tin về lỗi mà máy chủ web gặp phải khi xử lý các yêu cầu, chẳng hạn như khi tệp bị thiếu.
@@ -82,6 +95,23 @@ Trường thứ nhất: Trường thời gian - lưu thời gian nhận được
 Trường thứ 2: liệt kê mức độ nghiêm trọng của lỗi được báo cáo  
 Trường thứ 3: Địa chỉ IP của client tạo ra lỗi
 
+### Log khi câú hình sai httpd
+Ví dụ :  
+Ta vào file cấu hình httpd:
+```
+cd /var/www/html/
+vi wp-config.php
+```
+
+![](../images/screen_3.png) 
+Lưu và đóng file.  
+
+Ta truy cập vào file log /var/log/httpd/error_log/
+```
+cd /var/log/httpd/
+vi error_log
+```
+![](../images/screen1.png)
 
 
 
