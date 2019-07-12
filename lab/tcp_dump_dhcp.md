@@ -5,7 +5,7 @@
 ```
 - Sau đó, dùng lệnh tcpdump để bắt gói tin dhcp:
 ```
-tcpdump -i ens36 port 67
+tcpdump -i ens36 port 67 -w dhcp.pcap
 ```
 - Tiếp theo, ta cần  OpenSSH-Server :  
 Ta thực hiện câu lệnh :
