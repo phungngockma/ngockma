@@ -77,16 +77,12 @@ Truy cập vào file /var/log/httpd/access_log/
 
 ![](../images/screen_2.png)
 
-
 <b name="b">
-
-
 
 ## 2. Error log </b>
 - Chứa thông tin về lỗi mà máy chủ web gặp phải khi xử lý các yêu cầu, chẳng hạn như khi tệp bị thiếu.
 - Là nơi đầu tiên để xem xét khi xảy ra sự cố khi khởi động máy chủ hoặc với hoạt động của máy chủ vì nó thường chứa thông tin chi tiết về những gì xảy ra và cách khắc phục
 - Nơi lưu trữ file log là /var/log/httpd/error_log (đối với centOs) và /var/log/apache2/error.log (đối với ubuntu)
-
 - Định dạng của nhật ký lỗi là dạng tương đối tự do và mô tả. Nhưng có một số thông tin nhất định có trong hầu hết các mục nhật ký lỗi. Ví dụ, đây là một thông điệp điển hình.
 ```
 [Wed Jul 03 09:16:58.344664 2019] [mpm_prefork:notice] [pid 7412] AH00163: Apache/2.4.6 (CentOS) configured -- resuming normal operations
