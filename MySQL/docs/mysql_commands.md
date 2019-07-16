@@ -71,7 +71,7 @@ GRANT ALL PRIVILEGES ON mydatabase.* TO 'username'@'localhost' IDENTIFIED BY 'my
 ```
 ### Thay đổi mật khẩu user:
 ```
-UPDATE mysql.user SET password=PASSWORD("newpass") WHERE User='username';
+UPDATE mysql.user SET password=PASSWORD("newpass") WHERE User="username";
 ```
 ### Xóa user:
 ```
