@@ -1,7 +1,11 @@
 # Ghi chép thực tập 
 
-1.[LINUX](./LINUX)   
-2.[VMware](./VMware)   
-3.[Webserver](./Webserver)    
-4.[MySQL](./MySQL)    
-5.[Wordpress](./Wordpress)     
+1.[Tìm hiểu về CCNA](./CCNA)
+2.[LINUX](./LINUX)   
+3.[VMware](./VMware)   
+4.[Webserver](./Webserver)    
+5.[MySQL](./MySQL)    
+6.[Wordpress](./Wordpress)  
+7.[markdown](./markdown)
+8.[Tìm hiểu về LVM](./LVM)
+
