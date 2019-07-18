@@ -1,9 +1,12 @@
 # Bắt gói tin HTTP bằng TCPdump
+Mô hình như sau:
+
+![](../images/1.png) 
+
 ## Bước 1 : Dùng lệnh TCPdump để bắt gói tin HTTP
 ```
 tcpdump -i ens33 port 80 -w http.pcap
 ```
-![](../images/.png)
 
 ## Bước 2: Ta cần copy file gói tin http trên máy ảo ta thực hiện lệnh :
 ``` 
