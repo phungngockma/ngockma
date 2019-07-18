@@ -4,11 +4,11 @@
 2.[Ưu nhược điểm LVM](#b)  
 3.[Các thành phần trong LVM](#c)  
 4.[Thao tác với LVM](#d)  
-4.1.[Chuẩn bị](#e)  
-4.2.[Tạo Logical Volume trên LVM](#f)  
-4.3.[Thay đổi dung lượng physical volume](#g)   
-4.4.[Thay đổi dung lượng volume group](#h)  
-4.5.[Xóa Logical Volume, Volume Group, Physical Volume](#k)  
+- 4.1.[Chuẩn bị](#e)  
+- 4.2.[Tạo Logical Volume trên LVM](#f)  
+- 4.3.[Thay đổi dung lượng physical volume](#g) 
+- 4.4.[Thay đổi dung lượng volume group](#h)  
+- 4.5.[Xóa Logical Volume, Volume Group, Physical Volume](#k)  
  
 
 # Giới thiệu về LVM (Logical Volume Management)
