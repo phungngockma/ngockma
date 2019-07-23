@@ -32,12 +32,12 @@ lvdisplay
 - LV Creation host, time : thời gian 
 - LV Status : Trạng thái Logical Volume
 - LV Size : Dung lượng Logical Volume
-- Currents LE: 
-- Segments : 
-- Allocation :inherit
+- Currents LE: Số lượng phạm vi hiện tại
+- Segments:  
+- Allocation :Trạng thái phân bổ hiện tại 
 - Read ahead sectors:
-- currently set to:
-- Block device : 
+- currently set to: 
+- Block device : thiết bị chặn
 
 Kiểm tra dung lượng của Logical Volume và kiểm tra file system:
 
@@ -48,8 +48,7 @@ Kiểm tra dung lượng của Logical Volume và kiểm tra file system:
 - LV: Tên logical volume
 - %Data: Phần trăm dung lượng logical volume được sử dụng
 - Lsize: Kích thước của logical volume 
-
-![](../images/a10.png)  
+- Attr : thuộc tính của logical volume
 
 
 

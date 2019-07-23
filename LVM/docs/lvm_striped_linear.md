@@ -40,7 +40,7 @@ Khi ta lưu trữ ổ dữ liệu vào ổ đĩa thì ta sẽ có hai kiểu lư
 - Nhược điểm : Khi bị mất dữ liệu sẽ mất hết dữ liệu của một phần đó. Làm việc chậm hơn bởi vì chỉ có một phân vùng mà trong khi các khu vừng khác không hoạt động
 ### Striped
 
-- Ưu điểm: Tốc độ sẽ nhanh hơn vì tất cả các phân vùng sẽ cùng làm việc. Tốc độ đọc và ghi cũng nhannh hơn phương pháp Linear
+- Ưu điểm: Tốc độ sẽ nhanh hơn vì tất cả các phân vùng sẽ cùng làm việc. Tốc độ đọc và ghi cũng nhanh hơn phương pháp Linear
 - Nhược điểm: Khi mất dữ liệu ở một phân vùng thì sẽ bị mất và ảnh hưởng rất nhiều dữ liệu bởi vì mỗi dữ liệu đều được lưu ở nhiều phân vùng khi sử dụng phương pháp striped
 
 <c name="c">
@@ -119,14 +119,14 @@ Trong đó:
 - of= viết đầu ra của file
 - option : các tùy chọn cho câu lệnh
 
-![](../images/b14.png)
+![](../images/b15.png)
 
 Với tab terminal thứ 2 ta thực hiện lệnh sau:
 
 ```
 bwm-ng -u bytes -i disk
 ```
-![](../images/b15.png)
+![](../images/b11.png)
 
 kết quả ta thấy được rằng chỉ có ổ sdb1 là đang chạy để lưu trữ khi ta copy phân vùng.Ta copy sẽ mất 93,0278s thì hoàn thành được.
 
