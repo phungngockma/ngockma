@@ -27,17 +27,13 @@ lvdisplay
 - LV Path : thư mục chứa Logical Volume
 - LV Name : tên của Logical Volume
 - VG Name : tên của Volume Group mà Logical Volume thuộc vào.
-- LV UUID : Universally Unique IDentifier
+- LV UUID : Universally Unique IDentifier, định danh duy nhất.  
 - LV Write Access : Logical Volume ghi truy cập 
 - LV Creation host, time : thời gian 
 - LV Status : Trạng thái Logical Volume
 - LV Size : Dung lượng Logical Volume
 - Currents LE: Số lượng phạm vi hiện tại
-- Segments:  
-- Allocation :Trạng thái phân bổ hiện tại 
-- Read ahead sectors:
-- currently set to: 
-- Block device : thiết bị chặn
+- Allocation :Trạng thái phân bổ hiện tại
 
 Kiểm tra dung lượng của Logical Volume và kiểm tra file system:
 
