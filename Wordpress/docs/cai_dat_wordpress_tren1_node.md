@@ -1,14 +1,15 @@
 # Cài đặt và cấu hình WordPress với LAMP trên CentOS 7
 
 # Mục lục
-1. [Cài đặt LAMP(Linux, Apache, MySQL – MariaDB, PHP)](#a)
-2. [Cài đặt Wordpress](#b)
 
-<a name="a">
+[1.Cài đặt LAMP(Linux, Apache, MySQL – MariaDB, PHP)](#a)  
+[2.Cài đặt Wordpress](#b)  
+
+<a name="a"></a>
 
 # Cài đặt và cấu hình WordPress với LAMP trên CentOS 7
 
-## 1. Cài đặt LAMP(Linux, Apache, MySQL – MariaDB, PHP)</a>
+## 1. Cài đặt LAMP(Linux, Apache, MySQL – MariaDB, PHP)
 
 ### Apache 
 
@@ -73,9 +74,9 @@ systemctl restart httpd.service
 php -v
 ```
 
-<b name="b'>
+<a name="b"></a>
 
-## 2. Cài đặt Wordpress trên CentOS7 </b>
+## 2. Cài đặt Wordpress trên CentOS7
 Vào thư mục /html của bạn trước khi tải về các tập tin wordpress mới nhất.
 ```
 cd /var/www/html/
