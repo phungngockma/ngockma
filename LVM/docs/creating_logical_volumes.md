@@ -3,12 +3,13 @@
 [1.Creating Linear, Striped Volumes](#a)    
 [2.Creating Mirrored Volumes](#b)  
 
-<a name="a">
+
 
 #  Creating Logical Volumes  
 
+<a name="a"></a>
 
-## 1. Creating Linear , Striped Volumes</a>
+## 1. Creating Linear , Striped Volumes
 
 
 ### Bước 1: Cài đặt lệnh wget
@@ -98,7 +99,9 @@ Sử dụng với cách lưu trữ striped :
 
 Kết quả ở logical striped ta thấy rằng cả physical sdb2 và sdc2 cùng chạy để có thể lưu trữ được khi ta copy phân vùng. Và khi ta để ý rằng copy sẽ mất 88,6238s là hoàn thành được.
 
-## 3.Creating Mirrored Volumes
+<a name="b"></a>
+
+## 2.Creating Mirrored Volumes
 
 - Tạo physical volume :
 ```
