@@ -1,27 +1,26 @@
 # Mục lục
 
-1.[Giới thiệu LVM](#a)    
-2.[Ưu nhược điểm LVM](#b)  
-3.[Các thành phần trong LVM](#c)  
-4.[Thao tác với LVM](#d)  
-4.1.[Chuẩn bị](#e)    
-4.2.[Tạo Logical Volume trên LVM](#f)     
-4.3.[Thay đổi dung lượng physical volume](#g)   
-4.4.[Thay đổi dung lượng volume group](#h)    
-4.5.[Xóa Logical Volume, Volume Group, Physical Volume](#k)  
+- [1.Giới thiệu LVM](#1)    
+- [2.Ưu nhược điểm LVM](#2)  
+- [3.Các thành phần trong LVM](#3)  
+- [4.Thao tác với LVM](#4)  
+- [4.1.Chuẩn bị](#4.1)    
+- [4.2.Tạo Logical Volume trên LVM](#4.2)     
+- [4.3.Thay đổi dung lượng physical volume](#4.3)   
+- [4.4.Thay đổi dung lượng volume group](#4.4)
+- [4.5.Xóa Logical Volume, Volume Group, Physical Volume](#4.5)  
 
 
 # Giới thiệu về LVM (Logical Volume Management)
 
-<a name="a">
+<a name="1"></a>
 
-## 1. Giới thiệu LVM </a>
+## 1. Giới thiệu LVM 
 Logical Volume Management(LVM) dùng quản lí các thiết bị lưu trữ. Là một phương pháp ấn định không gian ổ đĩa thành những logicalvolume khiến cho việc thay đổi kích thước của một phân vùng trở nên dễ dàng. Điều này thật dễ dàng khi bạn muốn quản lý công việc của mình tại riêng một phân vùng mà muốn mở rộng nó ra lớn hơn.
 
-<a name="b">
+<a name="2"></a>
 
-
-## 2. Ưu nhược điểm của LVM </a>
+## 2. Ưu nhược điểm của LVM
 
 Ưu điểm của LVM là tăng tính linh hoạt và khả năng kiểm soát.
 - Không để hệ thống bị gián đoạn hoạt động
@@ -34,9 +33,9 @@ Nhược điểm:
 - Khả năng mất dữ liệu cao khi một trong số các đĩa cứng bị hỏng.
 - Windows không thể nhận ra vùng dữ liệu của LVM. Nếu Dual-boot ,Windows sẽ không thể truy cập dữ liệu trong LVM.
 
-<a name="c">
+<a name="3"></a>
 
-## 3. Thành phần trong LVM</a>
+## 3. Thành phần trong LVM
 
 ![mô hình thành phần trong LVM](../images/lvm.jpg) 
 
@@ -68,21 +67,21 @@ Volume Group được chia nhỏ thành nhiều Logical Volume, mỗi Logical Vo
 - Sắp xếp dữ liệu trên đĩa cứng máy tính  
 - Quản lý vị trí vật lý của mọi thành phần dữ liệu
 
-<a name="d">
+<a name="4"></a>
 
-## 4. Thao tác với LVM</a>
+## 4. Thao tác với LVM
 
-<a name="e">
+<a name="4.1"></a>
 
-### 4.1. Chuẩn bị</a>
+### 4.1. Chuẩn bị
 Tạo máy ảo trên vmware Workstation cài CentOS7
 Add thêm một số ổ cứng vào máy ảo
 
 ![](../images/lvm1.jpg.png)
 
-<a name="f">
+<a name="4.2"></a>
 
-### 4.2. Tạo Logical Volume trên LVM</a>
+### 4.2. Tạo Logical Volume trên LVM
 #### B1. Kiểm tra các Hard Drives có trên hệ thống
 
 Bạn có thể kiểm tra xem có những Hard Drives nào trên hệ thống bằng cách sử dụng câu lệnh lsblk 
@@ -169,9 +168,9 @@ df -h
 ```
 ![](../images/9.png)
 
-<a name="g">
+<a name="4.3"></a>
 
-### 4.3. Thay đổi dung lượng physical volume</a>
+### 4.3. Thay đổi dung lượng physical volume
 Trước khi thay đổi dung lượng physical volume ta cần kiểm tra Volume Group còn dư dung lượng để kéo giãn Logical Volume không ta thực hiện câu lệnh sau:
 ```
 vgdisplay
@@ -216,9 +215,9 @@ Cuối cùng là mount lại Logical Volume
 ```
 ![](../images/a4.png)
 
-<a name="h">
+<a name="4.4"></a>
 
-### 4.4. Thay đổi dung lượng volume group </a>
+### 4.4. Thay đổi dung lượng volume group 
 Đầu tiên ta kiểm tra xem có phân vùng nào chưa thuộc group thì ta sẽ thêm phân vùng đó vào một group là cách để tăng kích thước cho group đó.  
 
 Nhóm thêm 1 partition vào Volume Group như sau:
@@ -235,9 +234,9 @@ vgreduce /dev/vg-demo1 /dev/sdb3
 
 ![](../images/a6.png)
 
-<a name="k">
+<a name="4.5"></a>
 
-### 4.5. Xóa Logical Volume, Volume Group, Physical Volume</a>
+### 4.5. Xóa Logical Volume, Volume Group, Physical Volume
 #### Xóa Logical Voulume
 Trước tiên ta phải Umount Logical Volume
 ```
@@ -263,3 +262,5 @@ Cuối cùng là xóa Physical Volume:
 pvremove /dev/sdb3
 ```
 Để xóa một phân vùng của một thiết bị nào nào đó ta dùng lệnh fdisk tên_thiết_bị sau đó chọn d và cuối cùng là chọn tên của phân vùng muốn xóa. 
+
+

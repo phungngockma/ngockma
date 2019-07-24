@@ -1,51 +1,58 @@
 # Mục lục 
-1.[So sánh hai kiểu dữ liệu](#a)  
-2.[Ưu nhược điểm của từng kiểu dữ liệu](#b)  
-3.[Cách thực hiện tạo một Logical Volume với LVM Stripe, LVM linear](#c)  
+- [1.Tìm hiểu logical volume manager](#1)    
+- [2.Ưu nhược điểm của từng kiểu dữ liệu](#2)  
+- [3.Cách thực hiện tạo một Logical Volume với LVM Stripe, LVM linear](#3)  
 
 
+<a name="1"></a>
 
-# Tìm hiểu Logical Volume Manager(LVM) linear và striped
+## 1.Tìm hiểu logical volume mangager</a>
 
-Vậy ở một disk sẽ lưu trữ dữ liệu ra sao và kiểu lưu dữ liệu nào sẽ là tối ưu.Ở đây có hai kiểu lưu trữ trong disk là linear và striped
+### Linear Logical Volumes 
+- Linear : Dữ liệu sẽ được lưu hết phân vùng này rồi bắt đầu chuyển sang phân vùng khác để lưu trữ.  
 
-<a name="a">
-
-## 1.So sánh hai kiểu dữ liệu </a>  
-Ta có thể hình dung được cách thức hoạt động của cơ chế theo 2 hình ảnh sau:
-
-- Đối với LVM Linear:
+Cách ghi dữ liệu:
 
 ![](../images/linear-read-write-pattern.gif) 
 
-- Đối với LVM Stripe:
+### Striped Logical Volumes 
+- Striped: sẽ chia đều các dữ liệu ra và ghi vào các phân vùng đã có. Và cách chia dữ liệu ra bao nhiêu thì được định sẵn bởi người cài đặt nó.  
+
+Cách ghi dữ liệu:
 
 ![](../images/striped-read-write-pattern.gif)
 
-Tóm lại, ta được so sánh như sau:
+### Mirrored Logical Volumes
+- Mirrored Logical Volumes duy trì các bản sao dữ liệu giống hệt nhau trên các thiết bị khác nhau. Khi dữ liệu được ghi vào một thiết bị, nó cũng được ghi vào thiết bị thứ hai.Cung cấp sự an toàn nếu các thiết bị có hỏng hóc.
+- Trong các LV chạy mirror , nếu một LV bị hỏng , LV còn lại sẽ chạy Linear Volume và vẫn có thể truy cập đến được.
+- LVM chia thiết bị được sao chép thành các vùng có kích thước thường là 512KB.  
+- LVM có lưu trữ log để theo dõi các phân vùng đồng bộ của các data được ghi.
 
-![](../images/a12.png) 
+![](../images/c1.png)
 
-Khi ta lưu trữ ổ dữ liệu vào ổ đĩa thì ta sẽ có hai kiểu lưu trữ như trên đó là linear và striped. Giả sử ta có các phân vùng từ b tới i như trên thì các kiểu lưu trữ sẽ được lưu trữ như sau
 
-- Linear : Dữ liệu sẽ được lưu hết phân vùng này rồi bắt đầu chuyển sang phân vùng khác để lưu trữ
-- Striped: sẽ chia đều các dữ liệu ra và ghi vào các phân vùng đã có. Và cách chia dữ liệu ra bao nhiêu thì được định sẵn bởi người cài đặt nó
 
-<b name="b">
+<a name="2"></a>
 
-## 2. Ưu điểm và nhược điểm của hai kiểu lưu trữ</b>
+## 2. Ưu điểm và nhược điểm của các kiểu lưu trữ
 ### Linear
 
 - Ưu điểm : Các dữ liệu tập trung vào một phân vùng sẽ dễ dàng quản lý
 - Nhược điểm : Khi bị mất dữ liệu sẽ mất hết dữ liệu của một phần đó. Làm việc chậm hơn bởi vì chỉ có một phân vùng mà trong khi các khu vừng khác không hoạt động
+
 ### Striped
 
 - Ưu điểm: Tốc độ sẽ nhanh hơn vì tất cả các phân vùng sẽ cùng làm việc. Tốc độ đọc và ghi cũng nhanh hơn phương pháp Linear
 - Nhược điểm: Khi mất dữ liệu ở một phân vùng thì sẽ bị mất và ảnh hưởng rất nhiều dữ liệu bởi vì mỗi dữ liệu đều được lưu ở nhiều phân vùng khi sử dụng phương pháp striped
 
-<c name="c">
+### Mirror 
 
-## 3. Cách thực hiện tạo một Logical Volume với LVM Stripe, LVM linear</c>
+- Ưu điểm : Nếu một LV bị hỏng , LV còn lại sẽ chạy Linear Volume và vẫn có thể truy cập đến được.
+
+
+<a name="3"></a>
+
+## 3. Cách thực hiện tạo một Logical Volume với LVM Stripe, LVM linear
 
 Ta thực hiện 1 ví dụ để làm rõ về 2 kiểu dữ liệu stripe và linear. Ta cần chuẩn bị:
 - Bao gồm 3 disk : vda, vdb và vdc
@@ -126,17 +133,33 @@ Với tab terminal thứ 2 ta thực hiện lệnh sau:
 ```
 bwm-ng -u bytes -i disk
 ```
-![](../images/b11.png)
+![](../images/b17.png)
 
-kết quả ta thấy được rằng chỉ có ổ sdb1 là đang chạy để lưu trữ khi ta copy phân vùng.Ta copy sẽ mất 93,0278s thì hoàn thành được.
+Kết quả ta thấy được rằng chỉ có ổ sdb1 là đang chạy để lưu trữ khi ta copy phân vùng.Ta copy sẽ mất 93,0278s thì hoàn thành được.
 
 Sử dụng với cách lưu trữ striped :
 
 ![](../images/b13.png)
 
-![](../images/b12.png)
+![](../images/b16.png)
 
 Kết quả ở logical striped ta thấy rằng cả physical sdb2 và sdc2 cùng chạy để có thể lưu trữ được khi ta copy phân vùng. Và khi ta để ý rằng copy sẽ mất 88,6238s là hoàn thành được.
 
+### Tốc độ ghi giữa LV Linear và LV Striped
+Để so sánh tốc độ ghi , ta ghi 200MB vào 2 Logical Volume Striped và Linear:
 
+Kiểm tra bằng script sau :
+```
+curl -Lso- https://raw.githubusercontent.com/nhanhoadocs/scripts/master/Utilities/bench_vm.sh | bash  
+```
+
+Tốc độ của Linear :
+
+![](../images/c7.png) 
+
+Tốc độ của Striped:
+
+![](../images/c6.png)
+
+Vậy ta thấy dữ liệu lưu vào ổ striped có tốc độ nhanh hơn ghi vào linear
 
