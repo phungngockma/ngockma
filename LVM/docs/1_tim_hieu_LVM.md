@@ -203,10 +203,16 @@ resize2fs /dev/(ten_group)/(ten_logical)
 ```
 umount /dev/(ten_group)/(ten_logical)
 ```
+
 Tiến hành giảm kích thước của Logical Volume:
 ```
 lvreduce -L 20M /dev/(ten_group)/(ten_logical)
 ```
+Sau khi ta thay đổi dung lượng như ta muốn thì ta sử dụng lệnh `resize2fs` để xác nhận thay đổi
+```
+resize2fs /dev/(ten_group)/(ten_logical)
+```
+
 ![](../images/a3.png)
 
 Cuối cùng là mount lại Logical Volume

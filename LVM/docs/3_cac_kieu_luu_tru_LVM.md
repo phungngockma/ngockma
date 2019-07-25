@@ -161,5 +161,5 @@ Tốc độ của Striped:
 
 ![](../images/c6.png)
 
-Vậy ta thấy dữ liệu lưu vào ổ striped có tốc độ nhanh hơn ghi vào linear
+Vậy ta thấy dữ liệu lưu vào ổ striped có tốc độ nhanh hơn ghi vào linear.
 
