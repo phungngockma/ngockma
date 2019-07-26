@@ -1,27 +1,29 @@
 # Mục lục
-1. [Thư mục chứa database](#a)
-2. [Quản lý tài khoản và phân quyền](#b)
-3. [Thao tác với database](#c)
-4. [Thao tác với table](#d)
-5. [Thao tác với cột và hàng](#e)
-6. [Thao tác sao lưu và phục hồi](#f)
+[1.Thư mục chứa database](#a)  
+[2.Quản lý tài khoản và phân quyền](#b)  
+[3.Thao tác với database](#c)  
+[4.Thao tác với table](#d)  
+[5.Thao tác với cột và hàng](#e)  
+[6.Thao tác sao lưu và phục hồi](#f)  
 
-<a name="a">
 
-# Các câu lệnh MySQL quan trọng </a> 
+
+# Các câu lệnh MySQL quan trọng 
 
 Đăng nhập MySQL bạn dùng lệnh: 
 ```
 mysql -u root -p
 ```
 
+<a name="a"></a>
+
 ## 1. Thư mục chứa database
 
 Trên CentOS, toàn bộ file raw database được lưu trong thư mục `/var/lib/mysql`
 
-<b name="b">
+<a name="b"></a>
 
-## 2. Quản lý tài khoản và phân quyền</b>
+## 2. Quản lý tài khoản và phân quyền
 
 ### Liệt kê các user đang có trong dịch vụ MySQL
  Ta dùng lệnh:
@@ -88,9 +90,9 @@ mysql> DELETE FROM mysql.user WHERE NOT (host="localhost" AND user="root");
 FLUSH PRIVILEGES;
 ```
 
-<c name="c">
+<a name="c"></a>
 
-## 3. Thao tác với database</c>
+## 3. Thao tác với database
 ### Hiển thị toàn bộ databases:
 ```
 SHOW DATABASES;
@@ -114,9 +116,9 @@ DROP DATABASE name_database;
 
 ![](../images/a5.png)
 
-<d name="d">
+<a name="d"></a>
 
-## 4. Thao tác với table </d>
+## 4. Thao tác với table
 
 Tất cả các thao tác bên dưới bạn phải lựa chọn trước database bằng cách dùng lệnh:
 ```
@@ -168,9 +170,9 @@ mysql> RENAME TABLE first TO second;
 mysql> DROP TABLE name_table;
 ```
 
-<e name="e">
+<a name="e"></a>
 
-## 5. Thao tác với cột và hàng</e>
+## 5. Thao tác với cột và hàng
 
 ### Hiển thị các column trong table:
 ```
@@ -248,9 +250,9 @@ VALUES (2, 'dang','oanh',21,8, 'hanoi');
 mysql> DELETE FROM mytable WHERE mycolumn="mydata";
 ```
 
-<f name="f">
+<a name="f"></a>
 
-## 6. Thao tác sao lưu và phục hồi</f>
+## 6. Thao tác sao lưu và phục hồi
 
 ### Sao lưu (backup database)
 Việc sao lưu (hay còn gọi là export hoặc backup)được sử dụng nhờ câu lênh mysqldump, câu lệnh này sẽ chuyển toàn bộ dữ liệu có trong database ra một file. Cú pháp câu lệnh này như sau:
