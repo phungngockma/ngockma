@@ -1,20 +1,21 @@
 # Mục lục
-1. [MariaDB là gì?](#a)
-2. [Cài đặt MariaDB như thế nào](#b)
+[1.MariaDB là gì?](#a)  
+[2.Cài đặt MariaDB như thế nào?](#b)
 
-<a name="a">
+<a name="a"></a>
 
 # MariaDB
-## 1. MariaDB là gì?</a>
+## 1. MariaDB là gì?
 
 MariaDB là một hệ thống quản lý cơ sở dữ liệu quan hệ mã nguồn mở (DBMS), một sự thay thế tương thích cho công nghệ cơ sở dữ liệu MySQL được sử dụng rộng rãi. Nó được tạo ra như một nhánh phần mềm của MySQL bởi các nhà phát triển.
 
-<b name"b">
 
-## 2. Cài đặt MariaDB như thế nào?</b>
+<a name="b"></a>
+
+## 2. Cài đặt MariaDB như thế nào?
 
 ### Thêm MariaDB Repository để cài đặt MariaDB bằng tiện ích YUM trên CentOS.
-Tạo file /etc/yum.repos.d/MariaDB.repo với nội dung sau:
+Tạo file  /etc/yum.repos.d/MariaDB.repo  với nội dung sau:
 
 ```
 [mariadb]
