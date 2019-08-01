@@ -192,9 +192,13 @@ Giải thích : Dòng 1: Khi dung lượng đạt tới 70% Dòng 2: Kích thư�
 ###  3. Restore snapshot
 Để restore Snapshot chúng ta phải un-mount file system
 ```
-umount /mnt/demo1
+umount /root/demo
 ```
-Check bằng lệnh df -h để kiểm tra đã un-mount thành công hay chưa.
-
+Check bằng lệnh df -h để kiểm tra đã un-mount thành công hay chưa.  
+Ta dùng lệnh sau để restore snapshot :
+```
+lvconvert --merge /dev/vg-demo1/lv-demo1-snap
+```
+![](../images/snapshot/s7.png)
 
 
