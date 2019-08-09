@@ -190,7 +190,7 @@ Giải thích đọc bảng
 - Type : Kiểu của trường
 - NULL : có được để giá trị null không
 - key : có là key chính hay không
-- default : mặc định của cột là
+- default : mặc định của cột là 
 ### Đổi tên column:
 ```
 alter table sinhvien change columnold columnnew (thuộc tính của trường);
