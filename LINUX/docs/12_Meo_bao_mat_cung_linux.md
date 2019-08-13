@@ -255,4 +255,81 @@ Cấu hình file `/etc/fstab`
 Disk Quotas là một giới hạn được thiết lập bởi một quản trị hệ thống mà hạn chế một số khía cạnh của hệ thống tập tin sử dụng trên hiện đại hệ điều hành . Chức năng của việc sử dụng Disk Quotas là phân bổ không gian đĩa hạn chế một cách hợp lý. 
 
 ### 16. Tắt IPv6 khi không sử dụng
-### 17. 
+### 17. Disable SUID và SGID không mong muốn
+#### SUID 
+- SUID ( hay Set user ID ) , được sử dụng trên các file thực thi ( executable files ) để cho phép việc thực thi được thực hiện dưới owner của file thay vì thực hiện như user đang login trong hệ thống .  
+- SUID cũng có thể được sử dụng để thay đổi ownership của file được tạo hoặc di chuyển nó đến 1 thư mục mà owner của nó sẽ là owner của thư mục chuyển đến thay vì là owner của nó được tạo ra
+#### SGID 
+- SGID ( hay Set group ID ) , cũng tương tự như SUID , được sử dụng trên các file thực thi ( excutable files ) để cho phép việc thực thi được thực hiện dưới owner group của file thay vì thực hiện như group đang login trong hệ thống .
+- SGID cũng có thể được sử dụng để thay đổi ownership group của file được tạo hoặc di chuyển nó đến 1 thư mục mà owner group của nó sẽ là owner group của thư mục chuyển đến thay vì là group mà nó được tạo ra . 
+
+Tất cả các tệp được kích hoạt SUID / SGID có thể bị sử dụng sai khi tệp thực thi SUID / SGID có vấn đề về bảo mật hoặc lỗi. Tất cả người dùng cục bộ hoặc từ xa có thể sử dụng tập tin đó    
+- Tìm tất cả các file có bật bit SUID
+```
+find / -perm +4000
+```
+- Tìm tất cả các file có bật bit SGID
+```
+find / -perm +2000
+```
+### 18. World-Writable Files on Linux Server 
+- Ai cũng có thể sửa đổi file World-Writable liên quan đến việc bảo mật.Sử dụng lệnh sau để tìm tất cả các thư mục con dạng world-writable trong thư mục /dir và các thư mục này có sticky bit được bật.
+```
+find /dir -xdev -type d \( -perm -0002 -a ! -perm -1000 \) -print
+```  
+### 19. Các file không thuộc quyền sở hữu của bất kỳ ai (noowner file)
+
+Tìm các file như vậy với lệnh sau:
+```
+find /dir -xdev \( -nouser -o -nogroup \) –print
+``` 
+### 20. Sử dụng dịch vụ Centralized Authentication 
+
+Dịch vụ xác thực tập trung cho phép bạn duy trì quyền kiểm soát trung tâm đối với dữ liệu xác thực và tài khoản Linux / UNIX. 
+### 21. Kerberos
+- Giao thức xác thực Kerberos. Giao thức Kerberos sử dụng mật mã mạnh để khách hàng có thể chứng minh danh tính của mình với máy chủ (và ngược lại) qua kết nối mạng không an toàn. Sau khi một khách hàng và máy chủ đã sử dụng Kerberos để chứng minh danh tính của họ, họ cũng có thể mã hóa tất cả các thông tin liên lạc của họ để đảm bảo quyền riêng tư và toàn vẹn dữ liệu khi họ tiến hành công việc.  
+### 22. Logging and Auditing 
+- Cấu hình logging và auditing để thu thập tất cả các nỗ lực hack và bẻ khóa. Theo mặc định syslog lưu trữ dữ liệu trong thư mục /var/log/. Điều này cũng hữu ích để tìm ra cấu hình sai phần mềm có thể mở hệ thống của bạn cho các cuộc tấn công khác nhau.  
+### 23. Logwatch / Logcheck 
+- Logwatch là một phần mềm phân tích và tạo các báo cáo hàng ngày trên các hệ thống Log. Mặc dù Logwatch không cung cấp những cảnh báo thời gian thực, nhưng thay vào đó nó sẽ tạo một bản report rút gọn được tổ chức cụ thể giúp ta dễ dàng review lại.  
+- Đọc các bản ghi của bạn sử dụng logwatch hoặc Logcheck. Những công cụ làm cho cuộc sống đọc nhật ký của bạn dễ dàng hơn. Bạn nhận được báo cáo chi tiết về các log thường trong syslog qua email. 
+### 24. Hệ thống thống kê với auditd  
+Các auditd được cung cấp cho thống kê hệ thống. Đó là trách nhiệm viết hồ sơ thống kê. Trong khi khởi động, các quy tắc trong /etc/audit.rules được đọc bởi daemon này. Bạn có thể mở /etc/audit.rules tập tin và thực hiện thay đổi cũng như thiết lập vị trí tập tin nhật ký và tùy chọn khác.
+### 25. Bảo mật OpenSSH server
+Các giao thức SSH được khuyến khích để đăng nhập từ xa và chuyển tập tin từ xa. Tuy nhiên, ssh được mở cho nhiều cuộc tấn công.  
+### 26. Sử dụng IDS( Intrusion Detection System )  
+Hệ thống phát hiện xâm nhập mạng (NIDS) là một hệ thống phát hiện xâm nhập cố gắng phát hiện các hoạt động độc hại như tấn công từ chối dịch vụ, quét cổng hoặc thậm chí cố gắng xâm nhập vào máy tính bằng cách giám sát lưu lượng mạng.
+
+### 27. Disable USB/firewire/thunderbolt devices
+
+Nhập lệnh sau để tắt thiết bị USB trên hệ thống Linux : 
+```
+# echo 'install usb-storage /bin/true' >> /etc/modprobe.d/disable-usb-storage.conf
+```
+### 28. Disable các dịch vụ không sử dụng
+### 29. Máy chủ Apache / PHP / Nginx an toàn
+Chỉnh sửa tệp httpd.conf và thêm vào như sau:
+```
+ServerTokens Prod
+ServerSignature Off
+TraceEnable Off
+Options all -Indexes
+Header always unset X-Powered-By
+```
+Khởi động lại Apache:
+```
+$ sudo systemctl restart apache2.service
+```
+### 30. Bảo vệ tập tin, thư mục và email
+Thiết lập cấp phép bởi các Linux là không thích hợp nếu một kẻ tấn công có thể truy cập vật lý vào máy tính và có thể đơn giản di chuyển ổ đĩa cứng của máy tính để hệ thống khác để sao chép và phân tích các dữ liệu nhạy cảm. Bạn có thể dễ dàng bảo vệ các tập tin, và partitons dưới Linux bằng cách sử dụng các công cụ sau đây:
+
+- Để mã hóa và giải mã tập tin với một mật khẩu, sử dụng lệnh gpg.
+- Linux hoặc mật khẩu bảo vệ tập tin UNIX với openssl và các công cụ khác.
+- Mã hóa thư mục với eCryptfs.
+- TrueCrypt là miễn phí mã nguồn mở phần mềm mã hóa ổ đĩa cho Windows 7 / Vista / XP, Mac OS X và Linux.
+- Mã hóa phân vùng trong Linux cho các thiết bị di động.
+- Thiết lập mã hóa Swap trên Linux.
+
+### 31.Backups
+Một bản sao lưu ngoại vi thích hợp cho phép bạn phục hồi từ máy chủ bị bẻ khóa, tức là xâm nhập. Các chương trình sao lưu UNIX truyền thống là dump và restore cũng được khuyến nghị. Bạn phải thiết lập sao lưu được mã hóa vào bộ lưu trữ ngoài.
+
