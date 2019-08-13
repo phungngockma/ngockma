@@ -196,3 +196,63 @@ Khóa tất cả các tài khoản mật khẩu trống:
 ```
 # passwd -l accountName
 ```
+## 11. Liệt kê các cổng mở và chương trình liên quan
+Để liệt kê tất cả các cổng mở ta dùng lệnh:
+```
+netstat -tulpn
+```
+HOẶC sử dụng lệnh ss như sau :
+```
+$ ss -tulpn
+```
+## 12. Cấu hình firewall dựa trên Iptables và TCPWrappers trên Linux 
+Iptables là một chương trình ứng dụng không gian người dùng cho phép bạn định cấu hình tường lửa (Netfilter)  
+Có thể ngăn chặn nhiều cuộc tấn công từ chối dịch vụ với sự trợ giúp của Iptables.
+### 13. Cấu hình file Linux /etc/sysctl.conf  
+Tệp `/etc/sysctl.conf` được sử dụng để định cấu hình các tham số kernel khi chạy. Linux đọc và áp dụng các cài đặt từ `/etc/sysctl.conf` tại thời điểm khởi động.  
+
+Ví dụ :
+
+```
+# Turn on execshield
+kernel.exec-shield=1
+kernel.randomize_va_space=1
+# Enable IP spoofing protection
+net.ipv4.conf.all.rp_filter=1
+# Disable IP source routing
+net.ipv4.conf.all.accept_source_route=0
+# Ignoring broadcasts request
+net.ipv4.icmp_echo_ignore_broadcasts=1
+net.ipv4.icmp_ignore_bogus_error_messages=1
+# Make sure spoofed packets get logged
+net.ipv4.conf.all.log_martians = 1
+### 14.Phân vùng đĩa riêng cho hệ thống Linux
+```
+
+### 14. Phân vùng đĩa riêng cho hệ thống Linux  
+Đảm bảo các hệ thống tệp sau được gắn trên các phân vùng riêng biệt:
+
+- / usr
+- / home
+- / var và / var / tmp
+- / tmp
+
+Tạo các phân vùng riêng cho gốc máy chủ Apache và FTP. Chỉnh sửa tập tin / etc / fstab và đảm bảo bạn thêm các tùy chọn cấu hình sau:
+
+- noexec : Ngăn chặn việc thực thi các chương trình , nhưng cho phép chạy scripts .
+
+- no dev : Không cho sử dụng các thiết bị quan trọng trên partition này (ngăn không cho sử dụng sda , ...)
+
+- nosuid : Không đặt quyền truy cập SUID / SGID trên phân vùng này 
+
+Ví dụ:
+
+Cấu hình file `/etc/fstab`
+```
+/dev/sda3  /ftpdata    ext4   defaults,nosuid,nodev,noexec 1 2 
+```  
+### 15. Disk Quotas
+Disk Quotas là một giới hạn được thiết lập bởi một quản trị hệ thống mà hạn chế một số khía cạnh của hệ thống tập tin sử dụng trên hiện đại hệ điều hành . Chức năng của việc sử dụng Disk Quotas là phân bổ không gian đĩa hạn chế một cách hợp lý. 
+
+### 16. Tắt IPv6 khi không sử dụng
+### 17. 
