@@ -2,7 +2,7 @@
 
 Bảo mật máy chủ Linux của bạn là rất quan trọng để bảo vệ dữ liệu, tài sản trí tuệ và thời gian của bạn khỏi tay kẻ bẻ khóa / tin tặc. Quản trị viên hệ thống chịu trách nhiệm bảo mật Máy chủ Linux.
 
-![](../images/m1.jpg)
+![](../images/Bao-mat-linux/m1.jpg)
 
 ## 1. Mã hóa truyền dữ liệu cho máy chủ Linux
 Tất cả dữ liệu được truyền qua mạng được mở để theo dõi. Mã hóa dữ liệu truyền bất cứ khi nào có thể bằng mật khẩu hoặc sử dụng keys.  
@@ -330,6 +330,81 @@ Thiết lập cấp phép bởi các Linux là không thích hợp nếu một k
 - Mã hóa phân vùng trong Linux cho các thiết bị di động.
 - Thiết lập mã hóa Swap trên Linux.
 
-### 31.Backups
+### 31. Backups
 Một bản sao lưu ngoại vi thích hợp cho phép bạn phục hồi từ máy chủ bị bẻ khóa, tức là xâm nhập. Các chương trình sao lưu UNIX truyền thống là dump và restore cũng được khuyến nghị. Bạn phải thiết lập sao lưu được mã hóa vào bộ lưu trữ ngoài.
+### 32. Sử dụng fail2ban / denyhost làm IDS (Cài đặt hệ thống phát hiện xâm nhập)
 
+Fail2Ban là một ứng dụng chạy nền theo dõi log file để phát hiện những địa chỉ IP đăng nhập sai password SSH nhiều lần.  
+#### Cài đặt Fail2Ban
+```
+yum install epel-release
+yum install fail2ban
+```
+#### Cấu hình Fail2Ban  
+Sau khi cài đặt xong, bạn mở file cấu hình của Fail2Ban lên sẽ thấy một số thông số như sau:
+```
+vi /etc/fail2ban/jail.conf  
+```
+![](../images/Bao-mat-linux/m2.jpg.png) 
+
+Trong đó
+
+- ignoreip: không block những địa chỉ này, thường địa chỉ IP ở VN là địa chỉ động, nên chúng ta không sử dụng được option này.
+- bantime: khoảng thời gian (giây) block IP
+- findtime: khoảng thời gian (giây) một IP phải login thành công
+- maxretry: số lần login false tối đa  
+
+#### Cấu hình Fail2Ban bảo vệ SSH  
+Tạo file cấu hình
+```
+vi /etc/fail2ban/jail.local
+```
+```
+[sshd]
+
+enabled  = true
+filter   = sshd
+action   = iptables[name=SSH, port=ssh, protocol=tcp]
+#           sendmail-whois[name=SSH, dest=root, sender=fail2ban@example.com]
+logpath  = /var/log/secure
+maxretry = 3
+bantime = 3600
+```
+
+Trong đó
+
+- enabled: kích hoạt bảo vệ, nếu muốn tắt bạn hãy chuyển thành false
+- filter: giữ mặc định để sử dụng file cấu hình /etc/fail2ban/filter.d/sshd.conf
+- action: fail2ban sẽ ban địa chỉ IP nếu match filter /etc/fail2ban/action.d/iptables.conf. Nếu bạn đã thay đổi port ssh, sửa đoạn port=ssh bằng port mới, ví dụ port=2222
+- logpath: đường dẫn file log fail2ban sử dụng để theo dõi
+- maxretry: số lần login false tối đa
+- bantime: thời gian ban IP 3600 giây = 1 giờ, bạn có thể điều chỉnh lại nếu muốn
+
+#### Khởi động fail2ban :
+Để khởi động fail2ban ta cần khởi động firewalld trước .
+```
+systemctl enable firewalld
+systemctl start firewalld
+```
+#### Theo dõi SSH login
+
+Bạn có thể sử dụng lệnh sau để biết được VPS/Server đã từng bị tấn công SSH chưa:
+```
+cat /var/log/secure | grep 'Failed password' | sort | uniq -c
+```
+Kết quả thường sẽ là như bên dưới, đã từng có rất nhiều đợt tấn công:
+
+![](../images/Bao-mat-linux/m3.png)
+
+Để xem IP đã bị banned bởi Fail2Ban bạn sử dụng lệnh:
+```
+fail2ban-client status sshd
+```
+Output trả về sẽ có dạng như thế này:
+
+![](../images/Bao-mat-linux/m4.png)
+
+Để xóa IP khỏi danh sách banned, bạn sử dụng lệnh sau :
+```
+fail2ban-client set sshd unbanip IPADDRESS
+```
