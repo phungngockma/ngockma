@@ -26,27 +26,27 @@ Với giao thức này, các máy client trong mạng có thể truy cập đế
 
 Lệnh `FTP / telnet / rsh` và các tệp được truyền có thể bị bắt bởi bất kỳ ai trên cùng một mạng bằng cách sử dụng gói sniffer. Giải pháp chung cho vấn đề này là sử dụng OpenSSH , SFTP hoặc FTPS (FTP qua SSL), bổ sung mã hóa SSL hoặc TLS vào FTP. Nhập lệnh yum sau để xóa NIS, rsh và các dịch vụ không phù hợp khác:
 ```
-# yum erase xinetd ypserv tftp-server telnet-server rsh-server
+ yum erase xinetd ypserv tftp-server telnet-server rsh-server
 ```
 
 Nếu bạn đang sử dụng máy chủ dựa trên Debian / Ubuntu Linux, hãy thử lệnh apt-get lệnh / apt để xóa dịch vụ không an toàn:
 ```
-$ sudo apt-get --purge remove xinetd nis yp-tools tftpd atftpd tftpd-hpa telnetd rsh-server rsh-redone-server
+ sudo apt-get --purge remove xinetd nis yp-tools tftpd atftpd tftpd-hpa telnetd rsh-server rsh-redone-server
 ```
 
 ## 3.  Giảm thiểu phần mềm để giảm thiểu lỗ hổng trong Linux
 Tránh cài đặt phần mềm không cần thiết để tránh lỗ hổng trong phần mềm. Sử dụng trình quản lý gói RPM như yum hoặc apt-get hoặc dpkg để xem lại tất cả các gói phần mềm đã cài đặt trên một hệ thống. Xóa tất cả các gói không mong muốn.
 
 ```
-# yum list installed
-# yum list packageName
-# yum remove packageName
+ yum list installed
+ yum list packageName
+ yum remove packageName
 ```
 OR
 ```
-# dpkg --list
-# dpkg --info packageName
-# apt-get remove packageName
+ dpkg --list
+ dpkg --info packageName
+ apt-get remove packageName
 ```
 
 ## 4. Một dịch vụ mạng trên mỗi hệ thống hoặc VM riêng biệt
@@ -55,11 +55,11 @@ Chạy các dịch vụ mạng khác nhau trên các máy chủ hoặc VM riêng
 ## 5. Luôn cập nhật kernel và phần mềm Linux
 Sử dụng trình quản lý gói RPM như yum và / hoặc apt-get hoặc dpkg để áp dụng tất cả các cập nhật bảo mật.
 ``` 
-# yum update
+ yum update
 ```
 HOẶC
 ``` 
-# apt-get update && apt-get upgrade
+ apt-get update && apt-get upgrade
 ```
 ## 6. SELinux
 
@@ -68,11 +68,11 @@ Sử dụng các lệnh useradd / usermod để tạo và duy trì tài khoản 
 ## 8. Thiết lập mật khẩu an toàn trên Linux 
 Để vô hiệu hóa lão hóa mật khẩu, hãy nhập: 
 ```
-# chage -M 99999 userName
+ chage -M 99999 userName
 ```
 Để lấy thông tin hết hạn mật khẩu, hãy nhập: 
 ```
-# chage -l userName
+ chage -l userName
 ```
 Các thiết lập về mật khẩu an toàn trên Linux đều được lưu tại `/etc/login.defs`. 
 ### 8.1. Thiết lập số ngày hết hạn của mật khẩu 
@@ -96,7 +96,7 @@ PASS_WARN_AGE 5
 Hạn chế sử dụng mật khẩu đã được sử dụng.Người dùng không thể thiết lập password quá số lượt quy định.  
 Mở file `/etc/pam.d/system-auth`:
 ```
-# vi /etc/pam.d/system-auth
+ vi /etc/pam.d/system-auth
 ```
 Tại dòng 16, đặt số lần mật khẩu đó được thiết lập:
 ```
@@ -109,20 +109,20 @@ Thiết lập độ dài ngắn nhất của mật khẩu. Người dùng không
 
 Thiết lập mật khẩu ngắn nhất là 8 kí tự:
 ```
-# authconfig --passminlen=8 --update
+ authconfig --passminlen=8 --update
 ```
 ### 8.6. Thiết lập độ phức tạp của mật khẩu theo lớp
 Độ phức tạp của mật khẩu được thiết lập theo số class xuất hiện trong mật khẩu.
 (kinds ⇒ UpperCase / LowerCase / Digits / Others)  
 Cấu hình mật khẩu phải xuất hiện ít nhất 2 class:
 ```
-# authconfig --passminclass=2 --update
+ authconfig --passminclass=2 --update
 ```
 ### 8.7. Thiết lập số lần lặp kí tự
 Đặt số lượng tối đa các ký tự liên tiếp được phép trong mật khẩu mới.
 Số lượng ký tự liên tiếp được phép tối đa là 2.  
 ```
-# authconfig --passmaxrepeat=2 --update
+ authconfig --passmaxrepeat=2 --update
 ```
 ### 8.8. Thiết lập độ phức tạp đối với mật khẩu mới.
 Yêu cầu ít nhất một ký tự chữ thường trong mật khẩu mới.  
@@ -190,11 +190,11 @@ faillog -r -u userName
 ## 10. Xác minh không có tài khoản nào có mật khẩu trống?
 Gõ lệnh sau 
 ```
-# awk -F: '($2 == "") {print}' /etc/shadow
+ awk -F: '($2 == "") {print}' /etc/shadow
 ```
 Khóa tất cả các tài khoản mật khẩu trống:
 ```
-# passwd -l accountName
+ passwd -l accountName
 ```
 ## 11. Liệt kê các cổng mở và chương trình liên quan
 Để liệt kê tất cả các cổng mở ta dùng lệnh:
@@ -203,7 +203,7 @@ netstat -tulpn
 ```
 HOẶC sử dụng lệnh ss như sau :
 ```
-$ ss -tulpn
+ ss -tulpn
 ```
 ## 12. Cấu hình firewall dựa trên Iptables và TCPWrappers trên Linux 
 Iptables là một chương trình ứng dụng không gian người dùng cho phép bạn định cấu hình tường lửa (Netfilter)  
@@ -260,7 +260,7 @@ Disk Quotas là một giới hạn được thiết lập bởi một quản tr�
 - SUID cũng có thể được sử dụng để thay đổi ownership của file được tạo hoặc di chuyển nó đến 1 thư mục mà owner của nó sẽ là owner của thư mục chuyển đến thay vì là owner của nó được tạo ra
 #### SGID 
 - SGID ( hay Set group ID ) , cũng tương tự như SUID , được sử dụng trên các file thực thi ( excutable files ) để cho phép việc thực thi được thực hiện dưới owner group của file thay vì thực hiện như group đang login trong hệ thống .
-- SGID cũng có thể được sử dụng để thay đổi ownership group của file được tạo hoặc di chuyển nó đến 1 thư mục mà owner group của nó sẽ là owner group của thư mục chuyển đến thay vì là group mà nó được tạo ra . 
+- SGID cũng có thể được sử dụng để thay đổi ownership group của file được tạo hoặc di chuyển nó đến 1 thư mục mà owner group của nó sẽ là owner group của thư mục chuyển đến thay vì là group mà nó được tạo ra .
 
 Tất cả các tệp được kích hoạt SUID / SGID có thể bị sử dụng sai khi tệp thực thi SUID / SGID có vấn đề về bảo mật hoặc lỗi. Tất cả người dùng cục bộ hoặc từ xa có thể sử dụng tập tin đó    
 - Tìm tất cả các file có bật bit SUID
@@ -295,7 +295,7 @@ Dịch vụ xác thực tập trung cho phép bạn duy trì quyền kiểm soá
 ### 24. Hệ thống thống kê với auditd  
 Các auditd được cung cấp cho thống kê hệ thống. Đó là trách nhiệm viết hồ sơ thống kê. Trong khi khởi động, các quy tắc trong /etc/audit.rules được đọc bởi daemon này. Bạn có thể mở /etc/audit.rules tập tin và thực hiện thay đổi cũng như thiết lập vị trí tập tin nhật ký và tùy chọn khác.
 ### 25. Bảo mật OpenSSH server
-Các giao thức SSH được khuyến khích để đăng nhập từ xa và chuyển tập tin từ xa. Tuy nhiên, ssh được mở cho nhiều cuộc tấn công.  
+uy nhiên, ssh được mở cho nhiều cuộc tấn công. Các giao thức SSH được khuyến khích để đăng nhập từ xa và chuyển tập tin từ xa.
 ### 26. Sử dụng IDS( Intrusion Detection System )  
 Hệ thống phát hiện xâm nhập mạng (NIDS) là một hệ thống phát hiện xâm nhập cố gắng phát hiện các hoạt động độc hại như tấn công từ chối dịch vụ, quét cổng hoặc thậm chí cố gắng xâm nhập vào máy tính bằng cách giám sát lưu lượng mạng.
 
@@ -303,7 +303,7 @@ Hệ thống phát hiện xâm nhập mạng (NIDS) là một hệ thống phát
 
 Nhập lệnh sau để tắt thiết bị USB trên hệ thống Linux : 
 ```
-# echo 'install usb-storage /bin/true' >> /etc/modprobe.d/disable-usb-storage.conf
+ echo 'install usb-storage /bin/true' >> /etc/modprobe.d/disable-usb-storage.conf
 ```
 ### 28. Disable các dịch vụ không sử dụng
 ### 29. Máy chủ Apache / PHP / Nginx an toàn
@@ -317,7 +317,7 @@ Header always unset X-Powered-By
 ```
 Khởi động lại Apache:
 ```
-$ sudo systemctl restart apache2.service
+ sudo systemctl restart apache2.service
 ```
 ### 30. Bảo vệ tập tin, thư mục và email
 Thiết lập cấp phép bởi các Linux là không thích hợp nếu một kẻ tấn công có thể truy cập vật lý vào máy tính và có thể đơn giản di chuyển ổ đĩa cứng của máy tính để hệ thống khác để sao chép và phân tích các dữ liệu nhạy cảm. Bạn có thể dễ dàng bảo vệ các tập tin, và partitons dưới Linux bằng cách sử dụng các công cụ sau đây:
