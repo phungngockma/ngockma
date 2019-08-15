@@ -226,7 +226,6 @@ net.ipv4.icmp_echo_ignore_broadcasts=1
 net.ipv4.icmp_ignore_bogus_error_messages=1
 # Make sure spoofed packets get logged
 net.ipv4.conf.all.log_martians = 1
-### 14.Phân vùng đĩa riêng cho hệ thống Linux
 ```
 
 ### 14. Phân vùng đĩa riêng cho hệ thống Linux  
