@@ -125,7 +125,7 @@ Fail2ban mà chúng tôi giới thiệu phía trên chỉ là một trong nhữn
 
 Các biện pháp Secure SSH thường được sử dụng nhằm tránh, hạn chế bị tấn công Brute force.   
 
-Username và Mật khẩu mạnh
+### Username và Mật khẩu mạnh
 
 Cấu hình timeout cho 1 session SSH, cấu hình  `/etc/ssh/sshd_config`  
 ```
@@ -148,7 +148,7 @@ Sử dụng port khác port 22, cấu hình `/etc/ssh/sshd_config`
 ```
 Port 3456
 ```
-Cho phép ssh từ một số IP, nhất đinh, cấu hình iptables.  
+### Cho phép ssh từ một số IP, nhất đinh, cấu hình iptables.  
 Để truy cập VPS qua SSH, bạn cần mở port SSH 22. Bạn có thể cho phép kết nối ssh ở bất cứ thiết bị nào, bất cứ ai và bất cứ đâu.
 Mặc định sẽ hiển thị ssh cho cổng 22, nếu bạn đổi ssh thành cổng khác thì iptables sẽ hiển thị số cổng
 ```
@@ -157,6 +157,35 @@ iptables -A INPUT -p tcp -m tcp --dport 3456 -j ACCEPT
 Bạn có thể chỉ cho phép kết nối VPS qua SSH duy nhất từ 1 địa chỉ IP nhất định 
 ```
 iptables -A INPUT -p tcp -s xxx.xxx.xxx.xxx -m tcp --dport 22 -j ACCEPT
+```
+### Bảo mật máy chủ server bằng SSH Key  
+Tạo SSH keys  
+```
+ssh-keygen -t rsa
+```
+Trong lúc cài đặt, chương trình sẽ hỏi bạn nơi lưu keys và mật khẩu sử dụng private key.  
+```
+[root@phungngoc ~]# ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): /root/.ssh/id_rsa
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:rvYuhaGMBPjD/PG36TwsXsOlhQhwWrHS/bwcbLsW0dc root@phungngoc.xyz
+The key's randomart image is:
++---[RSA 2048]----+
+|. . +.           |
+|o  * o           |
+| =o + .  .   .   |
+|  *....=... . E  |
+| . = +.oS.o.     |
+|  . + o=+B       |
+|       +X+       |
+|      ++*o       |
+|     ooB*.       |
++----[SHA256]-----+
 ```
 
 
