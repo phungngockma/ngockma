@@ -7,7 +7,7 @@
 [4. Kết luận](#4)
 
 
-![](../images/Bao-mat-linux/m3.jpg)
+![](../images/Bao-mat-linux/m4.jpg)
 
 <a name="1"></a>
 
