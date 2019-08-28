@@ -117,7 +117,6 @@ Gõ lệnh sau để lưu cấu hình :
 ```
 FLUSH PRIVILEGES;
 ```
-
 #### 3. Thoát khỏi MariaDB
 ```
 exit
@@ -165,4 +164,6 @@ Nhập các thông tin cho Website => Cài đặt Worpdress:
 
 Như vậy là đã thành công cài đặt cài đặt và cấu hình WordPress trên CentOS 7 bằng LAMP.
 
-![](../images/a10.png)
+![](../images/a10.png)  
+
+
