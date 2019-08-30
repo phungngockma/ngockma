@@ -1,4 +1,4 @@
-# Fail2ban và iptables trên CentOS
+# Cách sử dụng Fail2ban để bảo mật máy chủ CentOS
 
 # Mục lục 
 [1. Giới thiệu](#1)  
