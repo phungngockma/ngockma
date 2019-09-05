@@ -1,10 +1,10 @@
 # Mục lục 
-Contents
-[1.MySQL là gì? Lịch sử phát triển MySQL là gì ?](#a)
-[2.MySQL hoạt động như thế nào?](#b)
-[3.Cách cài đặt MySQL trên CentOS7](#c)
 
-<a name="a"></a>
+[1.MySQL là gì? Lịch sử phát triển MySQL là gì ?](#1)    
+[2.MySQL hoạt động như thế nào?](#2)     
+[3.Cách cài đặt MySQL trên CentOS7](#3)  
+
+<a name="1"></a>
 
 # MySQL
 
@@ -28,16 +28,17 @@ Contents
 - SQL là ngôn ngữ truy vấn có cấu trúc – Structured Query Language (SQL).
 - SQL không chỉ dùng để truy xuất dữ liệu mà SQL được sử dụng để điều khiển tất cả các chức năng mà một hệ quản trị cơ sở dữ liệu cung cấp cho người dùng.
 
-<a> name="b"></a>
+<a name="2"></a>
 
 ## 2. MySQL hoạt động như thế nào?
+
 ![](../images/hdmysql.png)
 
 1. MySQL tạo ra bảng để lưu trữ dữ liệu, định nghĩa sự liên quan giữa các bảng đó.
 2. Client sẽ gửi yêu cầu SQL bằng một lệnh đặc biệt trên MySQL.
 3. Ứng dụng trên server sẽ phản hồi thông tin và trả về kết quả trên máy client.
 
-<a name="c"><a>
+<a name="3"></a>
 
 ## 3. Cách cài đặt MySQL trên CentOS7
 
@@ -65,7 +66,7 @@ sudo yum install mysql-server
 
 ![](../images/screen3.png)
 
-###Bước 3 : Khởi động MySQL và kiểm tra xem nó có hoạt động không
+### Bước 3 : Khởi động MySQL và kiểm tra xem nó có hoạt động không
 
 MySQL chưa được khởi động sau khi cài đặt xong, nên bạn cần khởi động với lệnh sau:
 ```
