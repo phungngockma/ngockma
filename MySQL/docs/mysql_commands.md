@@ -221,7 +221,7 @@ Lệnh INSERT INTO trong SQL được sử dụng để thêm các hàng dữ li
 Có hai dạng cú pháp cho lệnh INSERT INTO trong SQL như sau:
 
 ```
-INSERT INTO TABLE_TEN (cot1, cot2, cot3,...cotN)]  
+INSERT INTO TABLE_TEN (cot1, cot2, cot3,...cotN 
 VALUES (giatri1, giatri2, giatri3,...giatriN);
 ```
 ```

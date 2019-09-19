@@ -2,7 +2,7 @@
 
 [1.MySQL là gì? Lịch sử phát triển MySQL là gì ?](#1)    
 [2.MySQL hoạt động như thế nào?](#2)     
-[3.Cách cài đặt MySQL trên CentOS7](#3)  
+[3.Cách cài đặt MySQL trên CentOS7](#3)
 
 <a name="1"></a>
 
