@@ -67,10 +67,22 @@ sudo yum install mysql-server
 ![](../images/screen3.png)
 
 ### Bước 3 : Khởi động MySQL và kiểm tra xem nó có hoạt động không
-
+Kiểm tra user, group
+```
+[root@localhost ~]# cat /etc/passwd | grep mysql  
+mysql:x:27:27:MariaDB Server:/var/lib/mysql:/sbin/nologin
+```
 MySQL chưa được khởi động sau khi cài đặt xong, nên bạn cần khởi động với lệnh sau:
 ```
 sudo systemctl start mysqld
+```
+Cho phép tự động chạy khi khởi động(chạy cùng hệ thống)
+```
+ systemctl enable mysql
+```
+Dừng dịch vụ
+```
+ systemctl stop mysql
 ```
 Để kiểm tra hãy gõ lệnh sau:
 ```
@@ -78,6 +90,11 @@ systemctl status mysqld
 ```
 ![](../images/screen4.png)
 
+Kiểm tra cổng mà Mysql đang sử dụng
+```
+[root@localhost ~]# netstat -plnt | grep mysql
+tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN      17720/mysqld        
+```
 ### Bước 4 : Cài đặt tài khoản root
 
 Để có thể cài đặt tài khoản root có thể sử dụng được thì ta thực hiện lệnh và hiển thị như sau:

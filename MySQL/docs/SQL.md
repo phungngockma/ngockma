@@ -103,7 +103,7 @@ SQL cung cấp 5 hàm tập hợp:
 
 Chỉ được xuất hiện trong mệnh đề SELECT hoặc HAVING
 
-### 9. Truy vấn lồng
+### 9. Truy vấn lồng nhau 
 
 - Là trường hợp các câu truy vấn (con) được viết
 lồng nhau
@@ -124,3 +124,23 @@ SELECT DISTINCT sid FROM SupplyProduct
 WHERE pid = ‘P1’ AND sid IN (SELECT sid FROM
 SupplyProduct SP2 WHERE SP2.pid = ‘P2’);
 ```
+### 10. Mệnh đề order by 
+
+Dùng để sắp xếp các kết quả trả về sau khi truy vấn
+
+Cú pháp
+```
+SELECT truong1, truong2,...truongN FROM ten_bang
+ORDER BY truong1, [truong2...] [ASC [DESC]]
+```
+### 11. Sử dụng join
+
+Được sử dụng để lấy dữ liệu từ nhiều bảng và ghép chúng lại với nhau
+```
+SELECT truong1, truong2 
+    FROM bang1  function JOIN bang 2
+    on bang1.truong = bang2.truong;
+```
+Một số function trong lệnh join
+
+- inner join : lấy những phần chung của 2 bảng.

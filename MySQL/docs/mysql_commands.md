@@ -250,6 +250,68 @@ VALUES (2, 'dang','oanh',21,8, 'hanoi');
 mysql> DELETE FROM mytable WHERE mycolumn="mydata";
 ```
 
+### Truy vấn Select 
+- **Select DISTINCT** là truy vấn dùng để loại bỏ nhưng hàng trùng lặp trong một cột
+```
+Select DISTINCT truong1, truong2,.. from ten_bang;
+```
+- **Select min** là truy vấn được sử dụng để trả về giá trị min của cột chọn. kiểu số sẽ so sánh lớn nhỏ còn kiểu text sẽ so sánh theo bảng chữ cái
+```
+Select min(truong1[truong2,...]) from ten_bang;
+```
+- **Select max** giống với select min nhưng nó sẽ trả về giá trị max.
+```
+Select max(truong1[truong2,...]) from ten_bang;
+```
+- **Select count** sẽ trả về số lượng hàng của cột đã chỉ định
+- **Select avg** sẽ trả về giá trị trung bình của cột đó. Nếu là kiểu text thì nó sẽ là 0. Chỉ áp dụng với kiểu số
+- **Select sum** sẽ trả về giá trị tổng của cột đó. Chỉ áp dụng với kiểu số.
+
+###  Mệnh đề order by
+
+Dùng để sắp xếp các kết quả trả về sau khi truy vấn
+
+Cú pháp
+```
+SELECT truong1, truong2,...truongN FROM ten_bang
+ORDER BY truong1, [truong2...] [ASC [DESC]]
+```
+### Sử dụng join
+
+Được sử dụng để lấy dữ liệu từ nhiều bảng và ghép chúng lại với nhau
+```
+SELECT truong1, truong2 
+    FROM bang1  function JOIN bang 2
+    on bang1.truong = bang2.truong;
+```
+Một số function trong lệnh join
+
+- **inner join** : lấy những phần chung của 2 bảng.
+- **right join** : lấy những phần dữ liệu chung của 2 bảng và bảng 2
+- **left join** : lấy những phần dữ liệu chung của 2 bảng và bảng 1
+
+###  Sử dụng in
+Dùng để thay thế cho lệnh or khi viết điều kiện where trong lệnh
+
+Ví dụ: muốn chọn những bạn có điểm thi bằng 8.5 9 và 9.5 thay vì viết 3 or thì ta sử dụng in
+```
+SELECT * FROM sinhvienk58 
+    WHERE diemthi IN ( 8.50, 9.00, 9.50 );
+```
+###  Sử dụng view
+**view** Được dùng để để lưu một truy vấn mặc định nào đó như là một bảng. Cấu trúc
+```
+create view `tên view` as truy vấn
+```
+Ví dụ: ta sẽ tạo ra một view như là một truy vấn bao gồm masonv, hoten, ngaysinh, masodv có cấu trúc như sau
+```
+create view `test` as select masonv, hoten, ngaysinh, masodv from quanly.nhanvien
+```
+sau đó ta đọc view như đọc bảng bằng truy vấn
+```
+SELECT * FROM `accounts_v_members`;
+```
+
 <a name="f"></a>
 
 ## 6. Thao tác sao lưu và phục hồi
