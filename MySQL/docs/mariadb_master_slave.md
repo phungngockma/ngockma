@@ -8,6 +8,7 @@ Slave node: (CentOS 8 64 bit) : IP 192.168.184.130
 Mô hình cài đặt :
 
 ![](../images/mysql_master/a10.png)
+
 ## Cấu hình cơ sở dữ liệu chủ master
 
 ### Bước 1: Mở tệp cấu hình `/etc/mysql.cnf` trên máy chủ chính :
