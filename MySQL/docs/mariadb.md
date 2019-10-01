@@ -31,7 +31,7 @@ gpgcheck=1
 ```
 ### Cài đặt MariaDB :
 ```
-yum  install MariaDB MariaDB-server
+yum install mariadb-server
 ```
 ### Cấu hình để MariaDB tự khởi động cùng HĐH mỗi khi khởi động CentOS 7 lên.
 ```
@@ -77,6 +77,8 @@ mysql> GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'mypa
 SET PASSWORD FOR "$username"@"$hostname" = PASSWORD("$password");
 ```
 ![](../images/b14.png)
+
+
 
 
 
