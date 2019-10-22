@@ -51,7 +51,7 @@ Insert và update 1000 bản ghi vào table sinhvien trong database Replica_db.
 - Tạo Script đơn giản để insert 2000 bản ghi vào Node Master và thực thi.
 ```
 for i in {1..2000}; do
-mysql -uroot -p$pass -e "use opencps; INSERT INTO sinhvien (id, name) VALUES ($i, 'test');"
+mysql -uroot -ppass -e "use opencps; INSERT INTO sinhvien (id, name) VALUES ($i, 'test');"
 done
 ```
 - Trong quá trình chạy, đột ngột tắt Node Slave.
