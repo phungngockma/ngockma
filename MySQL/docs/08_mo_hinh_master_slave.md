@@ -3,7 +3,7 @@
 
 [1. Cấu hình trên Master](#1)    
 [2. Cấu hình trên Slave1](#2)  
-[3. Cấu hình trên Slave1](#3)  
+[3. Cấu hình trên Slave2](#3)  
 [4. Kiểm tra](#4)
 ## Mô hình
 
