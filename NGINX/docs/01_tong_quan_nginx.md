@@ -8,7 +8,7 @@
 
 <a name="1"></a>  
 
-![](../images/n1.jpg)
+![](../images/n4.png)
 
 
 ## 1. NGINX là gì?
