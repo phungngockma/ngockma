@@ -56,3 +56,4 @@ Tính năng chính của NginX :
 - https://tech.bizflycloud.vn/nginx-la-gi-cach-cai-dat-nginx-20181101092814419.html
 - https://edwardthienhoang.wordpress.com/2018/08/20/event-driven-architecture/
 
+
