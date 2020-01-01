@@ -148,7 +148,7 @@ mysql -u root -p
 
 - Lệnh `SHOW MASTER STATUS` trả về vị trí hiện tại trong binary log (tọa độ chính xác cho biết chính xác điểm nào mà slave sẽ bắt đầu sao chép:
 
-![](../images/mysql_master/a7.png) 
+![](../images/mysql_master/a10.png) 
 
 
 ## Bước 4 : Sao lưu cơ sở dữ liệu trong máy chủ Master và chuyển nó sang Slave 

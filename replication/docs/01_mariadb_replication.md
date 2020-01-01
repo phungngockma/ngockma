@@ -26,7 +26,7 @@ bằng cách cho họ sao chép tự động từ một master tạo ra một c�
 
 ### Mô hình 
 
-![](../images/mysql_master/a1.png) 
+![](../images/mysql_master/a1.png)
 
 - Tại thời điểm hoạt động bình thường mọi request sẽ được đưa đến vào MySQL master. Khi MySQL master gặp sự cố, request sẽ được đẩy qua cho MySQL slave xử lí. Khi MySQL master up lại bình thường, request sẽ được trả về cho MySQL master.
 
